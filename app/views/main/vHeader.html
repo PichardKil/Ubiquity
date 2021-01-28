@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 {% block header %}
 	<base href="{{config["siteUrl"]}}">
@@ -11,6 +12,7 @@
 	{{ css('https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css') }}
 	{{css('css/style.css') | raw}}
 {% endblock %}
+
 </head>
 <body>
 {% block head %}
