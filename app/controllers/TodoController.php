@@ -3,14 +3,25 @@ namespace controllers;
 use Ubiquity\attributes\items\router\Get;
 use Ubiquity\attributes\items\router\Post;
 use Ubiquity\attributes\items\router\Route;
+use Ubiquity\utils\http\USession;
 
- /**
+
+/**
  * Controller TodoController
  **/
 class TodoController extends ControllerBase{
-  #[Route(path: "_default",name: "home")]
+  const CACHE_KEY = 'datas/lists/';
+  const EMPTY_LIST_ID='not saved';
+  const LIST_SESSION_KEY='list';
+  const ACTIVE_LIST_SESSION_KEY='active-list';
+
+  #[Route(path:"_default", name:'home' )]
   public function index(){
-    $this->display();
+    if(USession::exists(self::LIST_SESSION_KEY)) {
+      $list = USession::get(self::LIST_SESSION_KEY, []);
+      return $this->display($list);
+    }
+    $this->showMessage('Bienvenue !','TodoLists permet de gerer des listes...','info','info circle outline');
 
   }
 
@@ -67,11 +78,12 @@ class TodoController extends ControllerBase{
 
 	}
 
-	public function display(){
-    $this->loadView('TodoController/display.html');
+	public function display(array $list){
+    $this->loadView('TodoController/display.html', ['list'=>$list]);
   }
 
   private function showMessage(string $header, string $message, string $type = '', string $icon = 'info circle',array $buttons=[]) {
-    $this->loadView('main/message.html', compact('header', 'type', 'icon', 'message','buttons'));
+    $this->loadView('TodoController/message.html', compact('header', 'type', 'icon', 'message','buttons'));
   }
 }
+//
