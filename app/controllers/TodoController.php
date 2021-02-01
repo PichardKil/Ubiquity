@@ -9,7 +9,10 @@ use Ubiquity\attributes\items\router\Route;
  **/
 class TodoController extends ControllerBase{
   #[Route(path: "_default",name: "home")]
-  public function index(){}
+  public function index(){
+    $this->display();
+
+  }
 
 
   public function initialize()
@@ -64,4 +67,11 @@ class TodoController extends ControllerBase{
 
 	}
 
+	public function display(){
+    $this->loadView('TodoController/display.html');
+  }
+
+  private function showMessage(string $header, string $message, string $type = '', string $icon = 'info circle',array $buttons=[]) {
+    $this->loadView('main/message.html', compact('header', 'type', 'icon', 'message','buttons'));
+  }
 }
