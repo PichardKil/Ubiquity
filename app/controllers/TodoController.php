@@ -19,8 +19,9 @@ class TodoController extends ControllerBase{
   public function index(){
     if(USession::exists(self::LIST_SESSION_KEY)) {
       $list = USession::get(self::LIST_SESSION_KEY, []);
-      return $this->display($list);
+      return $this->displayList($list);
     }
+    $this->displayList(['Test','Eau','Lait','Fruits','Bonbons']);
     $this->showMessage('Bienvenue !','TodoLists permet de gerer des listes...','info','info circle outline');
 
   }
@@ -48,9 +49,17 @@ class TodoController extends ControllerBase{
 
   }
 	#[Post(path: "todo/new/{force}",name: "todo.new")]
-	public function newlist(int $force){
-
-	}
+  public function newlist($force = false){
+    if($force != false | !USession::exists(self::LIST_SESSION_KEY)){
+      USession::set(self::LIST_SESSION_KEY, []);
+      $this->displayList(USession::get(self::LIST_SESSION_KEY));
+    }else if(USession::exists(self::LIST_SESSION_KEY)) {
+      $this->showMessage("Nouvelle Liste", "Une liste existe déjà. Voulez vous la vider ?", "", "",
+        [['url' =>Router::path('todos.new/1'),'caption'=>'Créer une nouvelle liste','style'=>'basic inverted'],
+          ['url' =>Router::path('todos.menu'),'caption'=>'Annuler','style'=>'basic inverted']]);
+      $this->displayList(USession::get(self::LIST_SESSION_KEY));
+    }
+  }
 
 
 	#[Post(path: "todo/addElement",name: "todo.add")]
@@ -78,7 +87,7 @@ class TodoController extends ControllerBase{
 
 	}
 
-	public function display(array $list){
+  private function displayList($list){
     $this->loadView('TodoController/display.html', ['list'=>$list]);
   }
 
