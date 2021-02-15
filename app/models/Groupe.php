@@ -13,33 +13,33 @@ use Ubiquity\attributes\items\JoinTable;
 
 #[Table(name: "groupe")]
 class Groupe{
-	
+
 	#[Id()]
 	#[Column(name: "id",dbType: "int(11)")]
 	#[Validator(type: "id",constraints: ["autoinc"=>true])]
 	private $id;
 
-	
+
 	#[Column(name: "name",nullable: true,dbType: "varchar(65)")]
 	#[Validator(type: "length",constraints: ["max"=>65])]
 	private $name;
 
-	
+
 	#[Column(name: "email",nullable: true,dbType: "varchar(255)")]
 	#[Validator(type: "email",constraints: [])]
 	#[Validator(type: "length",constraints: ["max"=>255])]
 	private $email;
 
-	
+
 	#[Column(name: "aliases",nullable: true,dbType: "mediumtext")]
 	private $aliases;
 
-	
+
 	#[ManyToOne()]
 	#[JoinColumn(className: "models\\Organization",name: "idOrganization")]
 	private $organization;
 
-	
+
 	#[ManyToMany(targetEntity: "models\\User",inversedBy: "groupes")]
 	#[JoinTable(name: "groupeusers")]
 	private $users;
@@ -97,7 +97,7 @@ class Groupe{
 	}
 
 	 public function __toString(){
-		return $this->id.'';
+		return $this->name;
 	}
 
 }

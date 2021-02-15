@@ -14,45 +14,45 @@ use Ubiquity\attributes\items\JoinTable;
 
 #[Table(name: "user")]
 class User{
-	
+
 	#[Id()]
 	#[Column(name: "id",dbType: "int(11)")]
 	#[Validator(type: "id",constraints: ["autoinc"=>true])]
 	private $id;
 
-	
+
 	#[Column(name: "firstname",dbType: "varchar(65)")]
 	#[Validator(type: "length",constraints: ["max"=>65,"notNull"=>true])]
 	private $firstname;
 
-	
+
 	#[Column(name: "lastname",dbType: "varchar(65)")]
 	#[Validator(type: "length",constraints: ["max"=>65,"notNull"=>true])]
 	private $lastname;
 
-	
+
 	#[Column(name: "email",dbType: "varchar(255)")]
 	#[Validator(type: "email",constraints: ["notNull"=>true])]
 	#[Validator(type: "length",constraints: ["max"=>255])]
 	private $email;
 
-	
+
 	#[Column(name: "password",nullable: true,dbType: "varchar(255)")]
 	#[Validator(type: "length",constraints: ["max"=>255])]
 	#[Transformer(name: "password")]
 	private $password;
 
-	
+
 	#[Column(name: "suspended",nullable: true,dbType: "tinyint(1)")]
 	#[Validator(type: "isBool",constraints: [])]
 	private $suspended;
 
-	
+
 	#[ManyToOne()]
 	#[JoinColumn(className: "models\\Organization",name: "idOrganization")]
 	private $organization;
 
-	
+
 	#[ManyToMany(targetEntity: "models\\Groupe",inversedBy: "users")]
 	#[JoinTable(name: "groupeusers")]
 	private $groupes;
@@ -126,7 +126,7 @@ class User{
 	}
 
 	 public function __toString(){
-		return ($this->email??'no value').'';
+		return $this->firstname.' '.$this->lastname;
 	}
 
 }

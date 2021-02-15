@@ -9,35 +9,35 @@ use Ubiquity\attributes\items\OneToMany;
 
 #[Table(name: "organization")]
 class Organization{
-	
+
 	#[Id()]
 	#[Column(name: "id",dbType: "int(11)")]
 	#[Validator(type: "id",constraints: ["autoinc"=>true])]
 	private $id;
 
-	
+
 	#[Column(name: "name",dbType: "varchar(100)")]
 	#[Validator(type: "length",constraints: ["max"=>100,"notNull"=>true])]
 	private $name;
 
-	
+
 	#[Column(name: "domain",dbType: "varchar(255)")]
 	#[Validator(type: "length",constraints: ["max"=>255,"notNull"=>true])]
 	private $domain;
 
-	
+
 	#[Column(name: "aliases",nullable: true,dbType: "text")]
 	private $aliases;
 
-	
+
 	#[OneToMany(mappedBy: "organization",className: "models\\Groupe")]
 	private $groupes;
 
-	
+
 	#[OneToMany(mappedBy: "organization",className: "models\\Organizationsettings")]
 	private $organizationsettingss;
 
-	
+
 	#[OneToMany(mappedBy: "organization",className: "models\\User")]
 	private $users;
 
@@ -110,7 +110,7 @@ class Organization{
 	}
 
 	 public function __toString(){
-		return ($this->domain??'no value').'';
+		return $this->name;
 	}
 
 }

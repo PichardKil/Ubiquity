@@ -10,29 +10,29 @@ use Ubiquity\attributes\items\JoinColumn;
 
 #[Table(name: "organizationsettings")]
 class Organizationsettings{
-	
+
 	#[Id()]
 	#[Column(name: "idSettings",dbType: "int(11)")]
 	#[Validator(type: "id",constraints: ["autoinc"=>true])]
 	private $idSettings;
 
-	
+
 	#[Id()]
 	#[Column(name: "idOrganization",dbType: "int(11)")]
 	#[Validator(type: "id",constraints: ["autoinc"=>true])]
 	private $idOrganization;
 
-	
+
 	#[Column(name: "value",nullable: true,dbType: "varchar(100)")]
 	#[Validator(type: "length",constraints: ["max"=>100])]
 	private $value;
 
-	
+
 	#[ManyToOne()]
 	#[JoinColumn(className: "models\\Organization",name: "idOrganization")]
 	private $organization;
 
-	
+
 	#[ManyToOne()]
 	#[JoinColumn(className: "models\\Settings",name: "idSettings")]
 	private $settings;
@@ -78,7 +78,7 @@ class Organizationsettings{
 	}
 
 	 public function __toString(){
-		return $this->idSettings.'';
+		return $this->name;
 	}
 
 }
