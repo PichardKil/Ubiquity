@@ -21,8 +21,9 @@ class OrgaController extends ControllerBase{
 
   #[Route('orga')]
   public function index(){
+    $orgas=DAO::getAll(Organization::class);
     $this->repo->all("",false);
-    $this->loadView("OrgaController/index.html");
+    $this->loadView("OrgaController/index.html",['all'=>$orgas]);
   }
 
   #[Route(path: "orga/{idOrga}",name: "orga.getOne")]

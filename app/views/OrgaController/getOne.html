@@ -10,7 +10,7 @@
       {% for group in orgaGetOne.groupes %}
       <li>
         {{ group.__toString() }}
-        <span class="ui basic circular label">{{ group.users | length }}</span>
+        <span class="ui basic circular label"><i class="icon user"></i>{{ group.users | length }}</span>
       </li>
       {% endfor %}
     </ul>
@@ -21,7 +21,7 @@
       {% for user in orgaGetOne.users %}
       <li>
         {{ user.__toString() }}
-        <span class="ui basic circular label">{{ user.groupes | length }}</span>
+        <span class="ui basic circular label"><i class="icon users"></i>{{ user.groupes | length }}</span>
       </li>
       {% endfor %}
     </ul>
