@@ -8,12 +8,12 @@ return array(
 			"port"=>8889,
 			"user"=>"root",
 			"password"=>"root",
-			"options"=>[],
+			"options"=>array(),
 			"cache"=>false,
 			"wrapper"=>"Ubiquity\\db\\providers\\pdo\\PDOWrapper"
 			],
 	"sessionName"=>"s6045409e703eb",
-	"namespaces"=>[],
+	"namespaces"=>array(),
 	"templateEngine"=>"Ubiquity\\views\\engine\\Twig",
 	"templateEngineOptions"=>[
 			"cache"=>false
@@ -28,16 +28,14 @@ return array(
 )['sessionName'], \Monolog\Logger::INFO);
 	},
 	"di"=>[
-			"@exec"=>[
-					"jquery"=>function ($controller){
+			"@exec"=>array("jquery"=>function ($controller){
 						return \Ubiquity\core\Framework::diSemantic($controller);
-					}
-					]
+					})
 			],
 	"cache"=>[
 			"directory"=>"cache/",
 			"system"=>"Ubiquity\\cache\\system\\ArrayCache",
-			"params"=>[]
+			"params"=>array()
 			],
 	"mvcNS"=>[
 			"models"=>"models",
