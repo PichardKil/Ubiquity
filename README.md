@@ -1,4 +1,4 @@
-# td1
+# Ubiquity
 
 This README outlines the details of collaborating on this Ubiquity application.
 A short introduction of this app could easily go here.
@@ -7,7 +7,7 @@ A short introduction of this app could easily go here.
 
 You will need the following things properly installed on your computer.
 
-* php ^7.1
+* php >=7.4
 * [Git](https://git-scm.com/)
 * [Composer](https://getcomposer.org)
 * [Ubiquity devtools](https://ubiquity.kobject.net/)
@@ -15,7 +15,7 @@ You will need the following things properly installed on your computer.
 ## Installation
 
 * `git clone <repository-url>` this repository
-* `cd td1`
+* `cd Ubiquity`
 * `composer install`
 
 ## Running / Development
