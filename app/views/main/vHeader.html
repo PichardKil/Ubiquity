@@ -2,7 +2,7 @@
 <html>
 <head>
 {% block header %}
-	<base href="{{config["siteUrl"]}}">
+	<base href="{{config['siteUrl']}}">
 	<meta charset="UTF-8">
 	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 	<title>Ubiquity</title>
@@ -13,5 +13,16 @@
 {% endblock %}
 </head>
 <body>
-{% block head %}
+{%  block menu %}
+<div class="ui basic inverted segment">
+	<div class="ui container">
+		<div class="ui inverted secondary menu">
+			<a href="{{ path('home') }}" class="item">Home</a>
+			<div class="item">{{ _userInfo|raw }}</div>
+		</div>
+	</div>
+</div>
 {% endblock %}
+{% block head %}
+<div id="page-container" class="ui container">
+	{% endblock %}
