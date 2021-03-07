@@ -12,11 +12,11 @@ use Ubiquity\utils\http\USession;
 #[Route(path:"/login",inherited: true,automated: true)]
 class MyAuth extends \Ubiquity\controllers\auth\AuthController{
 
-    public function _getBaseRoute() { //permet de préciser le nom de la route pour ne pas prendre celui par défaut soit MyAuth
+    public function _getBaseRoute() {
         return '/login';
     }
 
-    public function _displayInfoAsString() { //permet de spécifié l'info relative au user
+    public function _displayInfoAsString() {
         return true;
     }
 
