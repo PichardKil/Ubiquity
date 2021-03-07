@@ -5,7 +5,8 @@ namespace controllers;
   */
 class MainController extends ControllerBase{
 
-	public function index(){
-		
-	}
+    #[Route('_default',name:'home')]
+    public function index(){
+        $this->jquery->renderView("MainController/index.html");
+    }
 }
