@@ -62,8 +62,11 @@ use WithAuthTrait;
 
     #[Route(path: "basket/add/{idProduct}",name: "addArticleToDefaultBasket")]
     public function addArticleToDefaultBasket($idProduct){
-        $basket = DAO::getOne(Basket::class, 'idUser= ?', false, [USession::get("idUser")]);
-        $Basketdetails = new BasketSession();
+        if(USession::get("paniers")){
+            $Basketdetails = USession::get("paniers");
+        }else{
+            $Basketdetails = new BasketSession();
+        }
         $Basketdetails->setIdProduct($idProduct);
         $Basketdetails->setQuantity(1);
         USession::set("paniers", $Basketdetails);

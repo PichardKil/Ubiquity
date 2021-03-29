@@ -32,13 +32,13 @@ class BasketSession{
 	#[JoinColumn(className: "models\\Product",name: "idProduct")]
 	private $product;
 
-
-	public function getIdProduct(){
+    public function getIdProduct(){
 		return $this->idProduct;
 	}
 
 	public function setIdProduct($idProduct){
 		$this->idProduct=$idProduct;
+		$this->product[sizeof($this->product)+1] = $idProduct;
 	}
 
 	public function getQuantity(){
