@@ -1,16 +1,17 @@
 <div class="ui grid">
     <div class="eight wide column">
-        <h1>{{ produit.name }}</h1>
+        <h1>{{ product.name }}</h1>
+        <img class="img" src="public/assets/img/{{product.image}}.jpg">
     </div>
     <div class="ui grid">
         <div class="eight wide column">
             <div class="ui large image"></div><br>
             <b>Commentaires :</b><br>
-            {{ produit.comments }}
+            {{ product.comments }}
         </div>
         <div class="eight wide column">
-            {{ produit.price }} €<br>
+            {{ product.price }} €<br>
         </div>
-        <a class="tiny ui olive button"><i class="shopping basket icon"></i>Panier</a>
+        <a href="{{ path('basket.add',[product.id])}}" class="tiny ui olive button"><i class="shopping basket icon"></i>Ajouter au Panier</a>
     </div>
 </div>

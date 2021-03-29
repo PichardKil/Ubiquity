@@ -1,14 +1,16 @@
 <?php
 namespace controllers;
-use models\Order;
+use models\Basket;
+use models\BasketSession;
 use models\Product;
 use models\Section;
-use models\User;
 use Ubiquity\attributes\items\router\Route;
 use Ubiquity\controllers\auth\AuthController;
 use Ubiquity\controllers\auth\WithAuthTrait;
 use Ubiquity\orm\DAO;
 use Ubiquity\utils\http\URequest;
+use Ubiquity\utils\http\UResponse;
+use Ubiquity\utils\http\USession;
 
 /**
   * Controller MainController
@@ -20,7 +22,7 @@ use WithAuthTrait;
     #[Route('_default',name:'home')]
 	public function index(){
         $promos=DAO::getAll(Product::class,'promotion<?', false, [0]);
-        $this->loadView("MainController/index.html", ["promos"=>$promos]);
+        $this->loadView("MainController/index.html", ["promos"=>$promos,"paniers"=>USession::get("paniers")]);
 	}
 
     public function initialize() {
@@ -58,4 +60,13 @@ use WithAuthTrait;
         $this->loadView('MainController/product.html',['section'=>$section,'produit'=>$product]);
     }
 
+    #[Route(path: "basket/add/{idProduct}",name: "addArticleToDefaultBasket")]
+    public function addArticleToDefaultBasket($idProduct){
+        $basket = DAO::getOne(Basket::class, 'idUser= ?', false, [USession::get("idUser")]);
+        $Basketdetails = new BasketSession();
+        $Basketdetails->setIdProduct($idProduct);
+        $Basketdetails->setQuantity(1);
+        USession::set("paniers", $Basketdetails);
+        UResponse::header('location', '/');
+    }
 }
