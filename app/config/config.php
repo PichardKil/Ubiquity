@@ -1,6 +1,6 @@
 <?php
 return array(
-		"siteUrl"=>"http://127.0.0.1/test/",
+		"siteUrl"=>"http://127.0.0.1/store/",
 		"database"=>[
 				"type"=>"mysql",
 				"dbName"=>"",
@@ -11,7 +11,7 @@ return array(
 				"options"=>[],
 				"cache"=>false
 		],
-		"sessionName"=>"test",
+		"sessionName"=>"Store",
 		"namespaces"=>[],
 		"templateEngine"=>'Ubiquity\\views\\engine\\Twig',
 		"templateEngineOptions"=>array("cache"=>false),
