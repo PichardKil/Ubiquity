@@ -1,0 +1,11 @@
+<h1>{{ section.name }}</h1>
+<div class="ui four column grid">
+    {% for produit in section.products %}
+        <div class="column">
+            <div class="ui segment">
+                <a class="item" href="{{ path("product",[section.id, product.id]) }}">{{ produit.name }}</a><br>
+                <a class="ui teal label">{{ produit.price }} €</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>

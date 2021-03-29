@@ -1,0 +1,16 @@
+<div class="ui grid">
+    <div class="eight wide column">
+        <h1>{{ produit.name }}</h1>
+    </div>
+    <div class="ui grid">
+        <div class="eight wide column">
+            <div class="ui large image"></div><br>
+            <b>Commentaires :</b><br>
+            {{ produit.comments }}
+        </div>
+        <div class="eight wide column">
+            {{ produit.price }} €<br>
+        </div>
+        <a class="tiny ui olive button"><i class="shopping basket icon"></i>Panier</a>
+    </div>
+</div>

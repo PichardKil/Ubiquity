@@ -1,0 +1,20 @@
+<div class="ui grid">
+    <div class="four wide column">
+        <div class="ui vertical fluid inverted menu">
+           {% for section in sections %}
+            <a href="{{ path("section", [section.id]) }}" class="item">{{ section }}
+            <span class="ui circular label">{{ section.products|length }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+        <div class="twelve wide stretched column">
+            <div class="ui segment">
+                {% if content == false %}
+                    {{ promoEnCours | raw }}
+                {% endif %}
+                {{ content | raw }}
+            </div>
+        </div>
+</div>
+{{ script_foot | raw }}

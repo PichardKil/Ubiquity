@@ -1,6 +1,6 @@
 <?php
 return array(
-		"siteUrl"=>"http://127.0.0.1/store/",
+		"siteUrl"=>"http://127.0.0.1/ubiquity_td-td5//",
 		"database"=>[
 				"type"=>"mysql",
 				"dbName"=>"",
@@ -11,13 +11,13 @@ return array(
 				"options"=>[],
 				"cache"=>false
 		],
-		"sessionName"=>"Store",
+		"sessionName"=>"ubiquitytdtd5",
 		"namespaces"=>[],
 		"templateEngine"=>'Ubiquity\\views\\engine\\Twig',
 		"templateEngineOptions"=>array("cache"=>false),
 		"test"=>false,
 		"debug"=>false,
-		"logger"=>function(){return new \Ubiquity\log\libraries\UMonolog("test",\Monolog\Logger::INFO);},
+		"logger"=>function(){return new \Ubiquity\log\libraries\UMonolog("ubiquity_td-td5/",\Monolog\Logger::INFO);},
 		"di"=>["@exec"=>["jquery"=>function($controller){
 						return \Ubiquity\core\Framework::diSemantic($controller);
 					}]],

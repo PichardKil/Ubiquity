@@ -51,10 +51,6 @@ return array(
 			"config"
 			],
 	"part2"=>[
-			"seo",
-			"translate",
-			"themes",
-			"maintenance",
-			"composer"
+			""
 			]
 	);

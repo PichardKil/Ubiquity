@@ -1,0 +1,49 @@
+<div  class="ui two column grid">
+<div class="column">
+    <div class="ui attached segment"> Store</div>
+        <div class="ui attached black segment">
+            <div class="item">
+                <a class="ui black button">Mes commandes ({{ user.orders|length }})</a>
+                <div style="margin-top: 5px"></div>
+            </div>
+            <div class="item">
+                <a href="{{ path('store') }}" class="ui black button">Parcourir le store</a>
+                <div style="margin-top: 5px"></div>
+            </div>
+        </div>
+</div>
+<div class="column">
+    <div class="ui attached segment"> Paniers </div>
+    <div class="ui attached black segment">
+        <div class="item">
+            <a class="ui green button">Nouveau...</a>
+            <div style="margin-top: 5px"></div>
+        </div>
+        <div class="item">
+            <a class="ui black button">Mes paniers ({{ user.baskets|length }})</a>
+            <div style="margin-top: 5px"></div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="ui two columns grid">
+    <div class="column">
+        <div class="ui attached segment"> Promotions en cours</div>
+        <div class="ui attached black segment">
+        <div class="ui divided list">
+            <ul>
+                {% for promo in promos %}
+                <td>{{ promo.name }}</td>
+                    <td>{{ promo.price }}</td>
+                {% endfor %}
+            </ul>
+        </div></div>
+    </div>
+</div>
+<div class="ui two columns grid">
+    <div class="column">
+        <div class="ui attached segment"> Consultés récemment</div>
+        <div class="ui attached black segment">
+        </div>
+    </div>
+</div>

@@ -91,7 +91,7 @@ class Orderdetail{
 	}
 
 	 public function __toString(){
-		return $this->idOrder;
+		return $this->prepared;
 	}
 
 }

@@ -12,7 +12,7 @@ return array(
 			"cache"=>false,
 			"wrapper"=>"Ubiquity\\db\\providers\\pdo\\PDOWrapper"
 			],
-	"sessionName"=>"s6061af1bf025a",
+	"sessionName"=>"s60210af0a5644",
 	"namespaces"=>array(),
 	"templateEngine"=>"Ubiquity\\views\\engine\\Twig",
 	"templateEngineOptions"=>[
@@ -24,7 +24,7 @@ return array(
 		return new \Ubiquity\log\libraries\UMonolog(array (
   'host' => '127.0.0.1',
   'port' => 8090,
-  'sessionName' => 's6061af1bf025a',
+  'sessionName' => 's60210af0a5644',
 )['sessionName'], \Monolog\Logger::INFO);
 	},
 	"di"=>[
