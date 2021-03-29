@@ -3,6 +3,8 @@
     {% for produit in section.products %}
         <div class="column">
             <div class="ui segment">
+                <img class="img" src="public/assets/img/{{produit.image}}.jpg">
+                <a>{{produit.image}}</a>
                 <a class="item" href="{{ path("product",[section.id, product.id]) }}">{{ produit.name }}</a><br>
                 <a class="ui teal label">{{ produit.price }} €</a>
             </div>
