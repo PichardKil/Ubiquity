@@ -87,6 +87,7 @@ use WithAuthTrait;
         $total = 0;
         for($i=0; $i<sizeof($productsIds);$i++){
             $products[$i] = DAO::getById(Product::class,$productsIds[$i+1],['products']);
+            $total += $products[$i]->getPrice();
         }
 		$this->loadView('MainController/basket.html',['produits'=>$products,'total'=>$total]);
 	}
