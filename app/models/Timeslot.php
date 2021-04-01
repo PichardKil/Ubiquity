@@ -81,7 +81,7 @@ class Timeslot{
 	}
 
 	 public function __toString(){
-		return $this->expired;
+		return ($this->expired??'no value').'';
 	}
 
 }

@@ -30,7 +30,7 @@ class BasketSession{
 	
 	#[ManyToOne()]
 	#[JoinColumn(className: "models\\Product",name: "idProduct")]
-	private $product;
+	private $product = array();
 
     public function getIdProduct(){
 		return $this->idProduct;
@@ -40,6 +40,7 @@ class BasketSession{
 		$this->idProduct=$idProduct;
 		$this->product[sizeof($this->product)+1] = $idProduct;
 	}
+
 
 	public function getQuantity(){
 		return $this->quantity;

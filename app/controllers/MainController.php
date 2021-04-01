@@ -1,5 +1,6 @@
 <?php
 namespace controllers;
+use Ubiquity\attributes\items\router\Get;
 use models\Basket;
 use models\BasketSession;
 use models\Product;
@@ -60,7 +61,7 @@ use WithAuthTrait;
         $this->loadView('MainController/product.html',['section'=>$section,'produit'=>$product]);
     }
 
-    #[Route(path: "basket/add/{idProduct}",name: "addArticleToDefaultBasket")]
+    #[Route(path: "basket/add/{idProduct}",name: "basket.add")]
     public function addArticleToDefaultBasket($idProduct){
         if(USession::get("paniers")){
             $Basketdetails = USession::get("paniers");
@@ -72,4 +73,39 @@ use WithAuthTrait;
         USession::set("paniers", $Basketdetails);
         UResponse::header('location', '/');
     }
+
+    #[Route(path: "basket/clear",name: "basket.clear")]
+    public function clear(){
+        USession::set("paniers", null);
+        $this->index();
+    }
+	#[Route(path: "basket/",name: "basket")]
+	public function basket(){
+        $Basketdetails = USession::get("paniers");
+        $productsIds = $Basketdetails->getProduct();
+        $products = array();
+        $total = 0;
+        for($i=0; $i<sizeof($productsIds);$i++){
+            $products[$i] = DAO::getById(Product::class,$productsIds[$i+1],['products']);
+        }
+		$this->loadView('MainController/basket.html',['produits'=>$products,'total'=>$total]);
+	}
+    #[Route(path: "basket/remove/{idProduct}",name: "basket.remove")]
+    public function removeProduct($idProduct){
+        $pannier = USession::get("paniers");
+        $Basketdetails = new BasketSession();
+        $products = $pannier->getProduct();
+        if(sizeof($products) >1) {
+        array_splice($products, array_search($idProduct,$products), 1);
+        print_r($products);
+            for ($i = 0; $i < sizeof($products); $i++) {
+                $Basketdetails->setIdProduct($products[$i]);
+            }
+            USession::set("paniers", $Basketdetails);
+            $this->basket();
+        }else{
+            $this->clear();
+        }
+    }
+
 }

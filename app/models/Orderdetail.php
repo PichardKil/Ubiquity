@@ -91,7 +91,7 @@ class Orderdetail{
 	}
 
 	 public function __toString(){
-		return $this->prepared;
+		return ($this->prepared??'no value').'';
 	}
 
 }

@@ -1,0 +1,18 @@
+<!--View associated to basket action of MainController controller -->
+<div class="ui segment">
+<a class="ui white button">Mon Panier | {{total}}€ | ({{ produits|length }} articles)</a>
+    <a class="ui red button" href="{{ path('basket.clear')}}">Vider</a>
+<div class="ui list">
+    {% for produit in produits %}
+    <div class="row">
+        <a href="{{ path('product', [0, produit.id])}}">
+        <div class="ui segment" style="display: flex;align-items: center; justify-content: space-around" >
+            <img class="img" style="max-height: 50px" src="public/assets/img/{{produit.image}}.jpg">
+            <a class="item" href="{{ path('product', [section.id, produit.id])}}">{{ produit.name }}</a><br>
+            <a class="ui teal label">{{ produit.price }} €</a>
+            <a class="ui red button" href="{{ path('basket.remove', [produit.id])}}">X</a>
+        </div>
+    </a>
+    </div>
+    {% endfor %}
+</div></div>
